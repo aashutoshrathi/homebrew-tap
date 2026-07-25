@@ -3,9 +3,9 @@
 # This file belongs in a tap repo (aashutoshrathi/homebrew-tap) under Casks/toki.rb.
 # scripts/update-cask.sh regenerates the version + sha256 after each release.
 cask "toki" do
-  version "2.4.3"
+  version "2.4.4"
   # update-cask.sh replaces this after each release
-  sha256 "3044e411d77e98300ae5ee8d6bf8913884df5782e13ed0785d5c3cc0e95f35db"
+  sha256 "3f24f395593e3f41b703e01d699effa125e1f2ade382e5fd0845392ef2a85c36"
 
   url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version}_universal.dmg"
   name "Toki"
