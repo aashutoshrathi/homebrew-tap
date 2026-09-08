@@ -8,9 +8,9 @@
 # user is carried onto the graduated stable build by a plain `brew upgrade` - brew's
 # version ordering already ranks 2.5.0 above 2.5.0-beta.N.
 cask "toki-beta" do
-  version "3.3.0-beta.1"
+  version "3.3.0-beta.2"
   # update-cask.sh replaces this after each release
-  sha256 "c41bc9309b99f00713e4a6e9da960ef2d3d973b5ac699fe917e58df602100837"
+  sha256 "fa5c2776c2552ad7acf706ed84608ad5d24c2fc44f144bb5c04aca696312efe4"
 
   # Prerelease tags publish the same universal DMG as stable; the filename carries the
   # base version, so the download URL combines the full tag with the base-version name.
@@ -27,10 +27,8 @@ cask "toki-beta" do
 
   # The release DMG is ad-hoc signed and not notarized, so Gatekeeper quarantines it.
   # Strip the quarantine flag on install so the app opens without a right-click-Open.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Toki.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Toki.app"]
   end
 
   zap trash: [
