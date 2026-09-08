@@ -3,9 +3,9 @@
 # This file belongs in a tap repo (aashutoshrathi/homebrew-tap) under Casks/toki.rb.
 # scripts/update-cask.sh regenerates the version + sha256 after each release.
 cask "toki" do
-  version "3.2.0"
+  version "3.3.0"
   # update-cask.sh replaces this after each release
-  sha256 "b34664f37fad0bc5febcdc9dd0e837ae77d53aa590cfc5dc97ce600fd296f70b"
+  sha256 "f7839a7a183a807736a32a5e9d6d2ba3e1d2ce4541880937cf4c6d2dee28e012"
 
   url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version}_universal.dmg"
   name "Toki"
@@ -16,12 +16,14 @@ cask "toki" do
 
   app "Toki.app"
 
+  # Homebrew checks the incoming cask's declarations, so both sides must declare the
+  # conflict for the mutual exclusion to hold in both install directions.
+  conflicts_with cask: "toki-beta"
+
   # The release DMG is ad-hoc signed and not notarized, so Gatekeeper quarantines it.
   # Strip the quarantine flag on install so the app opens without a right-click-Open.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Toki.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Toki.app"]
   end
 
   zap trash: [
