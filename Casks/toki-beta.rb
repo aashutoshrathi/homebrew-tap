@@ -8,9 +8,9 @@
 # user is carried onto the graduated stable build by a plain `brew upgrade` - brew's
 # version ordering already ranks 2.5.0 above 2.5.0-beta.N.
 cask "toki-beta" do
-  version "3.3.1"
+  version "3.3.2"
   # update-cask.sh replaces this after each release
-  sha256 "a4176a1643a9aa696ed5a64aaba6cab9169a2a90cd5e1c12d0f0484609b78348"
+  sha256 "afe2cc45fbc85ceb1af4e0b37fb556758c650efa5b596087754dbd3c1db341dd"
 
   # Prerelease tags publish the same universal DMG as stable; the filename carries the
   # base version, so the download URL combines the full tag with the base-version name.
