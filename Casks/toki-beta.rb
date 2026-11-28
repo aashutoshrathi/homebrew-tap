@@ -8,13 +8,15 @@
 # user is carried onto the graduated stable build by a plain `brew upgrade` - brew's
 # version ordering already ranks 2.5.0 above 2.5.0-beta.N.
 cask "toki-beta" do
-  version "3.4.5"
-  # update-cask.sh replaces this after each release
-  sha256 "608cf8d38ccb8f70b32412c620ec1753bd716dbd29475559787901d622fb340e"
+  arch arm: "arm64", intel: "x86_64"
 
-  # Prerelease tags publish the same universal DMG as stable; the filename carries the
-  # base version, so the download URL combines the full tag with the base-version name.
-  url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version.split('-').first}_universal.dmg"
+  version "3.4.6"
+  # update-cask.sh replaces this after each release
+  sha256 arm: "c8093ed1c29641ea82283e912971135508d2f12426a9ed689012ec1efc6e628e", intel: "2cad6e7f116ff74a9cd621f90286b6c585fbed4c1706b756786c538d4eb264eb"
+
+  # Prerelease tags publish the same per-architecture DMGs as stable; the filename carries
+  # the base version, so the download URL combines the full tag with the base-version name.
+  url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version.split('-').first}_#{arch}.dmg"
   name "Toki (Beta)"
   desc "Menu bar companion for AI coding agents and usage (beta channel)"
   homepage "https://github.com/aashutoshrathi/toki"

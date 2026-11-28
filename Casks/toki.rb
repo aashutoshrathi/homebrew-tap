@@ -3,11 +3,13 @@
 # This file belongs in a tap repo (aashutoshrathi/homebrew-tap) under Casks/toki.rb.
 # scripts/update-cask.sh regenerates the version + sha256 after each release.
 cask "toki" do
-  version "3.4.5"
-  # update-cask.sh replaces this after each release
-  sha256 "608cf8d38ccb8f70b32412c620ec1753bd716dbd29475559787901d622fb340e"
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version}_universal.dmg"
+  version "3.4.6"
+  # update-cask.sh replaces this after each release
+  sha256 arm: "c8093ed1c29641ea82283e912971135508d2f12426a9ed689012ec1efc6e628e", intel: "2cad6e7f116ff74a9cd621f90286b6c585fbed4c1706b756786c538d4eb264eb"
+
+  url "https://github.com/aashutoshrathi/toki/releases/download/v#{version}/Toki_#{version}_#{arch}.dmg"
   name "Toki"
   desc "Menu bar companion for AI coding agents and usage"
   homepage "https://github.com/aashutoshrathi/toki"
